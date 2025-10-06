@@ -1,0 +1,44 @@
+Set-Content -Path ".dockerignore" -Value @"
+# Entornos virtuales
+venv/
+env/
+ENV/
+.venv/
+.env
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de IDE / editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs y datos temporales
+logs/
+*.log
+*.tmp
+
+# Archivos de configuración local
+.env
+.env.local
+
+# GitHub y control de versiones
+.git/
+.gitignore
+
+# Otros archivos grandes o innecesarios en la imagen
+reporte.pdf
+data/
+"@

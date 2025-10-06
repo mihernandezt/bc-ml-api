@@ -1,0 +1,47 @@
+# .github/workflows/ci.yml
+# Pipeline de Integración Continua (CI) para el proyecto fintech-ml-api
+# Este workflow se ejecuta automáticamente en GitHub Actions cuando se hace push
+# o pull request a la rama principal. Automatiza pruebas y construcción de Docker.
+
+name: CI/CD Pipeline  # Nombre visible en la interfaz de GitHub Actions
+
+# Define cuándo se activa el workflow
+on:
+  push:
+    branches: [ "main" ]   # Se ejecuta al hacer push a la rama 'main'
+  pull_request:
+    branches: [ "main" ]   # También se ejecuta al abrir/actualizar un PR a 'main'
+
+# Define los trabajos (jobs) que se ejecutarán
+jobs:
+  test-and-build:  # Nombre del job: prueba y construcción
+    runs-on: ubuntu-latest  # Usa la última imagen de Ubuntu proporcionada por GitHub
+
+    # Lista de pasos secuenciales que se ejecutan en este job
+    steps:
+      # Paso 1: Obtener el código fuente del repositorio
+      - name: Checkout code
+        uses: actions/checkout@v4  # Acción oficial para clonar el repo
+
+      # Paso 2: Configurar el entorno de Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"  # Usa Python 3.10 (debe coincidir con tu entorno local)
+
+      # Paso 3: Instalar dependencias del proyecto
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt  # Instala Flask, scikit-learn, etc.
+          pip install pytest               # Asegura que pytest esté disponible para pruebas
+
+      # Paso 4: Ejecutar pruebas automatizadas
+      - name: Run tests
+        run: |
+          pytest tests/ -v  # Ejecuta todas las pruebas en la carpeta 'tests/' con salida detallada
+
+      # Paso 5: Construir la imagen de Docker (verifica que el Dockerfile funcione)
+      - name: Build Docker image
+        run: |
+          docker build -t fintech-ml-api .  # Construye la imagen localmente; no se sube a ningún registro

@@ -1,6 +1,6 @@
 # fintech-ml-api
 
-API REST de Machine Learning para la predicción diagnóstica de cáncer de mama (benigno/maligno), utilizando el dataset Breast Cancer Wisconsin (Diagnostic).  
+API REST de Machine Learning para la predicción diagnóstica de cáncer de mama (benigno/maligno), utilizando el dataset Breast Cancer Wisconsin (Diagnostic).Es un ejemplo sin validez clínica.
 Este proyecto implementa un flujo MLOps básico pero completo: entrenamiento del modelo, exposición como API con Flask, validación de entradas, manejo de errores, pruebas automatizadas con pytest, contenerización con Docker y pipeline de CI/CD con GitHub Actions.
 
 ## Información del modelo

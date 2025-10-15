@@ -59,7 +59,7 @@ fintech-ml-api/
 1. Clona el repositorio:
 
 ```bash
-git clone https://github.com/tu-usuario/fintech-ml-api.git
+git clone https://github.com/tu-usuario/bc-ml-api.git
 ```
 
 2. Crea y activa un entorno virtual (recomendado):
@@ -112,13 +112,13 @@ pytest tests/
 1. Construye la imagen:
 
 ```bash
-docker build -t fintech-ml-api .
+docker build -t bc-ml-api .
 ```
 
 2. Ejecuta el contenedor:
 
 ```bash
-docker run -p 5000:5000 fintech-ml-api
+docker run -p 5000:5000 bc-ml-api
 ```
 
 3. Accede a la API en:  
